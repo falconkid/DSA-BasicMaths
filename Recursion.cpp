@@ -2,20 +2,26 @@
 using namespace std;
 
 int count = 0;
-void f(){
-    if(count == 4){
-        return;
+int f(int n){
+
+    
+    if(count == n){
+        return n;
     }
-    cout<< count;
+    cout << count;
     count++;
-    f();
+    return f(n);
+
+
+    
 }
+    
 
 
 int main(){
 
     
-    f();
+    cout << f(4);
 
     return 0;
     
