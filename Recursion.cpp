@@ -31,6 +31,33 @@ void printReverse(int i , int n){
     
 }
 
+
+
+
+void backtrackN(int i , int n) {
+
+    if(i < 1){
+        return;
+    }
+
+    backtrackN(i-1 , n);
+    cout << i;
+
+}
+
+void backtrackNN(int i , int n) {
+
+    if(n < i){
+        return;
+    }
+
+    backtrackNN(i+1 , n);
+    cout << i;
+
+}
+
+
+
 int main(){
     int n;
     cout << "Enter n: " << endl;
@@ -39,6 +66,10 @@ int main(){
     printN(1 , n);
     cout << endl;
     printReverse(1 , n);
+    cout << endl;
+    backtrackN(n, n);
+    cout << endl;
+    backtrackNN(1, n);
 
     return 0;
     
