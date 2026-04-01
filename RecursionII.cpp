@@ -2,6 +2,7 @@
 using namespace std;
 #include <string>
 #include <cctype>
+#include<vector>
 
 // void ReverseofN(int arr[] , int n){
 //     if( n == 0  ){
@@ -23,7 +24,7 @@ using namespace std;
 
 
 
-//----------------Palindrome or not -------------------
+//----------------TWO-POINTER -------------------
 
 
 
@@ -54,6 +55,28 @@ bool isPalindrome(string test1){
 }
 
 
+int maxArea(vector<int>& height){
+    int start = 0;
+    int end = height.size()-1;
+    int maxarea = 0;
+    while(start<end){
+        int heightt = min(height[start], height[end]);
+        int width = end-start;
+        int area = heightt * width;
+        maxarea = max(maxarea , area);
+
+        if(height[start] < height[end]){
+            start++;
+        }
+        else{
+            end--;
+        }
+    }
+
+return maxarea;
+}
+
+
 
 int main() {
     string test1 = "A man, a plan, a canal: Panama";
@@ -61,6 +84,13 @@ int main() {
     
     cout << (isPalindrome(test1) ? "true" : "false") << endl;  // Expected: true
     cout << (isPalindrome(test2) ? "true" : "false") << endl;  // Expected: false
+
+
+    vector<int> height1 = {1, 8, 6, 2, 5, 4, 8, 3, 7};
+    cout << maxArea(height1) << endl;  // Expected: 49
+    
+    vector<int> height2 = {2, 3, 4, 5, 18, 17, 6};
+    cout << maxArea(height2) << endl;  // Expected: 17
     
     return 0;
 }
