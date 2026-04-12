@@ -52,6 +52,29 @@ return(minlength == INT_MAX) ? 0 : minlength;
 }
 
 
+
+double findMaxAverage(vector<int>& nums, int k){
+
+    int sum = 0;
+
+    for(int i = 0; i < k; i++){
+        sum = sum + nums[i];
+
+    }
+
+    int maxsum = sum;
+
+    for(int i = k; i < nums.size(); i++){
+
+        sum = sum + nums[i];
+        sum = sum - nums[i-k];
+        
+        maxsum = max(maxsum , sum );
+    }
+    return double(maxsum)/k;
+}
+
+
 int main() {
     string test1 = "abcabcbb";
     cout <<  "Length of longhest substring without repetition" <<  lengthOfLongestSubstring(test1) << endl;  // Expected: 3
@@ -66,6 +89,11 @@ int main() {
     vector<int> nums1 = {2, 3, 1, 2, 4, 3};
     int target1 = 7;
     cout << "Minimum sub array for the sum: " << minSubArrayLen(target1, nums1) << endl;  // Expected: 2
+
+
+    vector<int> nums = {1, 12, -5, -6, 50, 3};
+    int k = 4;
+    cout << "Maximum Average for the k length: " << findMaxAverage(nums, k) << endl;
     
     return 0;
 }
